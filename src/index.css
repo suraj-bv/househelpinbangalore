@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 99%;
+    --foreground: 228 40% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 228 40% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 228 40% 15%;
+
+    --primary: 228 46% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 228 35% 96%;
+    --secondary-foreground: 228 46% 35%;
+
+    --muted: 228 20% 96%;
+    --muted-foreground: 228 15% 46%;
+
+    --accent: 228 50% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 228 20% 90%;
+    --input: 228 20% 92%;
+    --ring: 228 46% 42%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 228 40% 20%;
+    --sidebar-primary: 228 46% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 35% 96%;
+    --sidebar-accent-foreground: 228 46% 35%;
+    --sidebar-border: 228 20% 90%;
+    --sidebar-ring: 228 46% 42%;
+  }
+
+  .dark {
+    --background: 228 35% 8%;
+    --foreground: 228 20% 96%;
+
+    --card: 228 30% 11%;
+    --card-foreground: 228 20% 96%;
+
+    --popover: 228 30% 11%;
+    --popover-foreground: 228 20% 96%;
+
+    --primary: 228 50% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 228 30% 15%;
+    --secondary-foreground: 228 30% 85%;
+
+    --muted: 228 20% 18%;
+    --muted-foreground: 228 15% 60%;
+
+    --accent: 228 50% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 228 40% 98%;
+
+    --border: 228 20% 20%;
+    --input: 228 20% 20%;
+    --ring: 228 50% 55%;
+
+    --sidebar-background: 228 35% 10%;
+    --sidebar-foreground: 228 20% 90%;
+    --sidebar-primary: 228 50% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 30% 15%;
+    --sidebar-accent-foreground: 228 30% 85%;
+    --sidebar-border: 228 20% 20%;
+    --sidebar-ring: 228 50% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glassmorphism {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .glassmorphism-dark {
+    background: rgba(57, 78, 155, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glossy-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    box-shadow: 
+      0 8px 32px rgba(57, 78, 155, 0.1),
+      0 2px 8px rgba(57, 78, 155, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(57, 78, 155, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .glossy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 16px 48px rgba(57, 78, 155, 0.15),
+      0 4px 16px rgba(57, 78, 155, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+  
+  .glossy-button {
+    background: linear-gradient(135deg, #394E9B, #4d63b8);
+    box-shadow: 
+      0 4px 16px rgba(57, 78, 155, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .glossy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 24px rgba(57, 78, 155, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  .premium-shadow {
+    box-shadow: 
+      0 10px 40px rgba(57, 78, 155, 0.12),
+      0 4px 12px rgba(57, 78, 155, 0.08);
+  }
+  
+  .premium-shadow-lg {
+    box-shadow: 
+      0 20px 60px rgba(57, 78, 155, 0.15),
+      0 8px 24px rgba(57, 78, 155, 0.1);
+  }
+  
+  .hover-scale {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  .gradient-primary {
+    background: linear-gradient(135deg, #394E9B 0%, #5a73d4 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, #4d63b8 0%, #7b8fdb 100%);
+  }
+  
+  .shine-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .shine-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .shine-effect:hover::before {
+    left: 100%;
+  }
+}
+
