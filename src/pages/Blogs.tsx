@@ -8,6 +8,7 @@ import BlogCard from "@/components/BlogCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 
 const POSTS_PER_PAGE = 12;
 
@@ -60,6 +61,12 @@ const Blogs = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Cleaning Tips & Home Care Blog | House Help in Bangalore"
+        description="Read expert cleaning tips, eco-friendly home care guides, and professional advice from House Help in Bangalore. Keep your home spotless with our blog."
+        canonicalPath="/blogs"
+        keywords="cleaning tips bangalore, home care blog, maid service tips, house cleaning guide, eco-friendly cleaning, home maintenance tips"
+      />
       <Navbar />
 
       {/* Hero */}

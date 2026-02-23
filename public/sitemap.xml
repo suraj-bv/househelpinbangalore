@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SITEMAP INDEX — This file references two sitemaps:
+  1. The static pages (home, blogs listing)
+  2. The dynamic sitemap from Convex (all blog posts, auto-updated)
+
+  Submit THIS file URL to Google Search Console:
+  https://househelpinbangalore.com/sitemap.xml
+-->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Static pages sitemap -->
+  <sitemap>
+    <loc>https://househelpinbangalore.com/sitemap-static.xml</loc>
+    <lastmod>2026-02-23</lastmod>
+  </sitemap>
+
+  <!-- Blog posts sitemap — dynamically generated from Convex database -->
+  <!-- This URL will return all blog post URLs automatically -->
+  <sitemap>
+    <loc>https://secret-mink-845.eu-west-1.convex.site/sitemap.xml</loc>
+    <lastmod>2026-02-23</lastmod>
+  </sitemap>
+
+</sitemapindex>

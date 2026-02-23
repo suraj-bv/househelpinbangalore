@@ -12,6 +12,7 @@ import FAQItem from "@/components/FAQItem";
 import { testimonials, type Testimonial } from "@/data/testimonials";
 import BlogCard from "@/components/BlogCard";
 import { Button } from "@/components/ui/button";
+import SEOHead from "@/components/SEOHead";
 
 const services = [
   { icon: SprayCan, title: "Daily Home Cleaning", description: "Sweeping, mopping, dusting furniture, cleaning tables, and basic room tidying." },
@@ -33,6 +34,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="House Help in Bangalore | Instant Maid Services | 1-2 Hour Slots"
+        description="Get instant house help in Bangalore. Book trained & verified maids for 1-2 hours for daily cleaning, dishwashing, laundry, and packing. Fixed hourly pricing, no long-term commitment."
+        canonicalPath="/"
+        keywords="house help bangalore, maid service bangalore, hourly maid bangalore, cleaning service bangalore, home cleaning bangalore, dishwashing service, laundry help bangalore, instant maid booking"
+      />
       <Navbar />
 
       {/* Hero */}

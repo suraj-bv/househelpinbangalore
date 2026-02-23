@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { generateFAQSchema } from "@/lib/blogStorage";
+import SEOHead from "@/components/SEOHead";
 
 const SingleBlog = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -36,16 +37,6 @@ const SingleBlog = () => {
         if (el) el.remove();
       };
     }
-  }, [post]);
-
-  // Update page title for SEO
-  useEffect(() => {
-    if (post) {
-      document.title = `${post.title} | House Help in Bangalore`;
-    }
-    return () => {
-      document.title = "House Help in Bangalore";
-    };
   }, [post]);
 
   // Loading state
@@ -79,6 +70,17 @@ const SingleBlog = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {post && (
+        <SEOHead
+          title={post.title}
+          description={post.excerpt}
+          canonicalPath={`/blogs/${post.slug}`}
+          ogImage={post.image}
+          ogType="article"
+          articlePublishedDate={post.date}
+          keywords={`${post.title.toLowerCase()}, house help bangalore, maid service, cleaning tips`}
+        />
+      )}
       <Navbar />
 
       {/* Banner */}

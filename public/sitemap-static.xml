@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+    http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://househelpinbangalore.com/</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://househelpinbangalore.com/"/>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&amp;q=80</image:loc>
+      <image:title>Professional Maid Service in Bangalore</image:title>
+      <image:caption>Instant house help and maid services in Bangalore with fixed hourly pricing</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Blog Listing Page -->
+  <url>
+    <loc>https://househelpinbangalore.com/blogs</loc>
+    <lastmod>2026-02-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en-IN" href="https://househelpinbangalore.com/blogs"/>
+  </url>
+
+</urlset>
