@@ -1,5 +1,7 @@
 import { SprayCan, Flame, CookingPot, Bath, ShieldCheck, DollarSign, CalendarCheck, ThumbsUp } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SectionHeading from "@/components/SectionHeading";
@@ -8,7 +10,6 @@ import TestimonialCard from "@/components/TestimonialCard";
 import AnimatedSection from "@/components/AnimatedSection";
 import FAQItem from "@/components/FAQItem";
 import { testimonials, type Testimonial } from "@/data/testimonials";
-import { blogPosts, type BlogPost } from "@/data/blogs";
 import BlogCard from "@/components/BlogCard";
 import { Button } from "@/components/ui/button";
 
@@ -27,6 +28,9 @@ const features = [
 ];
 
 const Index = () => {
+  // Real-time blog posts from Convex
+  const blogPosts = useQuery(api.blogPosts.getAll);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -45,7 +49,7 @@ const Index = () => {
         <div className="relative mx-auto flex max-w-6xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-24 lg:py-32">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 sm:px-5 sm:py-2 shadow-lg" style={{ backgroundColor: '#394E9B' }}>
             <span className="flex h-2 w-2 rounded-full bg-green-400 animate-pulse"></span>
-            <span className="text-xs sm:text-sm font-semibold text-white">Instant Maid Services in Bengaluru</span>
+            <span className="text-xs sm:text-sm font-semibold text-white">Instant Maid Services in Bangalore</span>
           </div>
           
           <h1 className="max-w-4xl text-3xl font-extrabold tracking-tight text-white drop-shadow-2xl sm:text-5xl lg:text-7xl text-balance">
@@ -423,8 +427,18 @@ const Index = () => {
             <p className="mt-3 max-w-xl text-muted-foreground">Cleaning guides, eco-friendly tips, and expert advice to help you keep your space fresh.</p>
           </div>
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {blogPosts.slice(0, 3).map((post: BlogPost) => (
-              <BlogCard key={post.id} {...post} />
+            {(blogPosts || []).slice(0, 3).map((post) => (
+              <BlogCard
+                key={post._id}
+                id={post._id}
+                slug={post.slug}
+                title={post.title}
+                excerpt={post.excerpt}
+                image={post.image}
+                date={post.date}
+                content={post.content}
+                createdAt={post.createdAt}
+              />
             ))}
           </div>
           <div className="mt-12 flex justify-center">
@@ -451,7 +465,7 @@ const Index = () => {
       <AnimatedSection className="mx-auto max-w-4xl px-4 py-20 sm:px-6">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl mb-3">Frequently Asked Questions</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Everything you need to know about our hourly maid services in Bengaluru.</p>
+          <p className="text-muted-foreground max-w-2xl mx-auto">Everything you need to know about our hourly maid services in Bangalore.</p>
         </div>
         
         <div className="space-y-4">
@@ -461,8 +475,8 @@ const Index = () => {
           />
           
           <FAQItem
-            question="What areas in Bengaluru do you serve?"
-            answer="We provide maid services across major areas and localities in Bengaluru. Check the app for availability in your specific location."
+            question="What areas in Bangalore do you serve?"
+            answer="We provide maid services across major areas and localities in Bangalore. Check the app for availability in your specific location."
           />
           
           <FAQItem

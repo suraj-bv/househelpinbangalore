@@ -17,7 +17,7 @@ const Navbar = () => {
     <nav className="sticky top-0 z-50 glassmorphism border-b border-primary/10 premium-shadow">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <Link to="/" className="text-xl font-bold text-primary hover:text-accent transition-colors">
-          House Help in Bengaluru
+          House Help in Bangalore
         </Link>
 
         {/* Desktop links */}

@@ -1,3 +1,8 @@
+export interface BlogFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   id: string;
   slug: string;
@@ -7,8 +12,8 @@ export interface BlogPost {
   image: string;
   date: string;
   createdAt: string;
-  author: string;
   featured?: boolean;
+  faqs?: BlogFAQ[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -21,7 +26,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=400&fit=crop",
     date: "2026-02-10",
     createdAt: "2026-02-10T09:00:00Z",
-    author: "Sarah Johnson",
     featured: true,
   },
   {
@@ -33,7 +37,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=400&fit=crop",
     date: "2026-02-05",
     createdAt: "2026-02-05T14:30:00Z",
-    author: "Emma Wilson",
     featured: true,
   },
   {
@@ -45,7 +48,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1527515637462-cff94eebd21f?w=800&h=400&fit=crop",
     date: "2026-01-28",
     createdAt: "2026-01-28T10:15:00Z",
-    author: "Michael Chen",
     featured: true,
   },
   {
@@ -57,18 +59,16 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800&h=400&fit=crop",
     date: "2026-01-20",
     createdAt: "2026-01-20T08:45:00Z",
-    author: "Lisa Park",
   },
   {
     id: "5",
-    slug: "monsoon-cleaning-bengaluru",
-    title: "Monsoon Cleaning Tips for Bengaluru Homes",
-    excerpt: "Keep your Bengaluru home fresh and mold-free during the rainy season with these essential cleaning tips.",
-    content: `Bengaluru's monsoon season brings much-needed rain but also challenges for keeping homes clean and dry.\n\n## Tackle Dampness Early\n\nUse dehumidifiers or moisture absorbers in closets and corners prone to dampness. Ensure proper ventilation in bathrooms and kitchens.\n\n## Prevent Mold Growth\n\nWipe down walls and window sills regularly. Use a vinegar solution to treat any early signs of mold before it spreads.\n\n## Keep Floors Dry\n\nPlace absorbent doormats at every entrance. Mop floors with a disinfectant daily to prevent bacterial growth from tracked-in moisture.\n\n## Protect Wooden Furniture\n\nApply a thin coat of furniture polish to wooden surfaces to protect them from humidity damage.\n\n## Wash Curtains and Linens\n\nFabrics absorb moisture and can develop a musty smell. Wash curtains, bed sheets, and cushion covers more frequently during monsoons.\n\nStaying proactive with cleaning during the monsoon keeps your home comfortable and healthy.`,
+    slug: "monsoon-cleaning-bangalore",
+    title: "Monsoon Cleaning Tips for Bangalore Homes",
+    excerpt: "Keep your Bangalore home fresh and mold-free during the rainy season with these essential cleaning tips.",
+    content: `Bangalore's monsoon season brings much-needed rain but also challenges for keeping homes clean and dry.\n\n## Tackle Dampness Early\n\nUse dehumidifiers or moisture absorbers in closets and corners prone to dampness. Ensure proper ventilation in bathrooms and kitchens.\n\n## Prevent Mold Growth\n\nWipe down walls and window sills regularly. Use a vinegar solution to treat any early signs of mold before it spreads.\n\n## Keep Floors Dry\n\nPlace absorbent doormats at every entrance. Mop floors with a disinfectant daily to prevent bacterial growth from tracked-in moisture.\n\n## Protect Wooden Furniture\n\nApply a thin coat of furniture polish to wooden surfaces to protect them from humidity damage.\n\n## Wash Curtains and Linens\n\nFabrics absorb moisture and can develop a musty smell. Wash curtains, bed sheets, and cushion covers more frequently during monsoons.\n\nStaying proactive with cleaning during the monsoon keeps your home comfortable and healthy.`,
     image: "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?w=800&h=400&fit=crop",
     date: "2026-01-15",
     createdAt: "2026-01-15T11:00:00Z",
-    author: "Priya Sharma",
   },
   {
     id: "6",
@@ -79,7 +79,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&h=400&fit=crop",
     date: "2026-01-10",
     createdAt: "2026-01-10T16:20:00Z",
-    author: "Arjun Reddy",
   },
   {
     id: "7",
@@ -90,7 +89,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&h=400&fit=crop",
     date: "2026-01-05",
     createdAt: "2026-01-05T09:30:00Z",
-    author: "Meera Nair",
   },
   {
     id: "8",
@@ -101,18 +99,16 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=400&fit=crop",
     date: "2025-12-28",
     createdAt: "2025-12-28T13:00:00Z",
-    author: "Sarah Johnson",
   },
   {
     id: "9",
     slug: "decluttering-small-apartments",
-    title: "Decluttering Tips for Small Bengaluru Apartments",
-    excerpt: "Maximize space and minimize clutter in your compact Bengaluru apartment with these practical strategies.",
-    content: `Space comes at a premium in Bengaluru, and keeping a small apartment organized requires smart strategies.\n\n## Adopt Minimalism\n\nStart by honestly assessing what you truly need. If you haven't used something in 6 months, consider donating or selling it.\n\n## Vertical Storage Solutions\n\nUse wall-mounted shelves, over-door organizers, and tall bookcases to make use of vertical space that's often wasted.\n\n## Under-Bed Storage\n\nInvest in flat storage containers that fit under your bed. These are perfect for seasonal clothing, extra linens, and rarely used items.\n\n## Kitchen Organization\n\nUse stackable containers for pantry items, magnetic strips for knife storage, and hooks inside cabinet doors for utensils.\n\n## Digital Declutter\n\nReduce paper clutter by going digital. Scan important documents and use cloud storage instead of filing cabinets.\n\nA clutter-free apartment feels larger, cleaner, and more peaceful—especially important in Bengaluru's compact living spaces.`,
+    title: "Decluttering Tips for Small Bangalore Apartments",
+    excerpt: "Maximize space and minimize clutter in your compact Bangalore apartment with these practical strategies.",
+    content: `Space comes at a premium in Bangalore, and keeping a small apartment organized requires smart strategies.\n\n## Adopt Minimalism\n\nStart by honestly assessing what you truly need. If you haven't used something in 6 months, consider donating or selling it.\n\n## Vertical Storage Solutions\n\nUse wall-mounted shelves, over-door organizers, and tall bookcases to make use of vertical space that's often wasted.\n\n## Under-Bed Storage\n\nInvest in flat storage containers that fit under your bed. These are perfect for seasonal clothing, extra linens, and rarely used items.\n\n## Kitchen Organization\n\nUse stackable containers for pantry items, magnetic strips for knife storage, and hooks inside cabinet doors for utensils.\n\n## Digital Declutter\n\nReduce paper clutter by going digital. Scan important documents and use cloud storage instead of filing cabinets.\n\nA clutter-free apartment feels larger, cleaner, and more peaceful—especially important in Bangalore's compact living spaces.`,
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=400&fit=crop",
     date: "2025-12-20",
     createdAt: "2025-12-20T07:45:00Z",
-    author: "Vikram Patel",
   },
   {
     id: "10",
@@ -123,7 +119,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800&h=400&fit=crop",
     date: "2025-12-15",
     createdAt: "2025-12-15T10:30:00Z",
-    author: "Emma Wilson",
   },
   {
     id: "11",
@@ -134,18 +129,16 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&h=400&fit=crop",
     date: "2025-12-10",
     createdAt: "2025-12-10T15:00:00Z",
-    author: "Priya Sharma",
   },
   {
     id: "12",
-    slug: "reducing-dust-bengaluru-home",
-    title: "Effective Ways to Reduce Dust in Your Bengaluru Home",
-    excerpt: "Combat Bengaluru's dust problem with these practical tips for a cleaner, dust-free living space.",
-    content: `Bengaluru's ongoing construction and traffic can make keeping a dust-free home feel like an impossible task. Here are strategies that actually work.\n\n## Seal Windows and Doors\n\nUse weather stripping and door sweeps to minimize dust entering through gaps. This alone can significantly reduce indoor dust.\n\n## Use Air Purifiers\n\nPlace HEPA air purifiers in bedrooms and living areas. They capture fine dust particles that regular cleaning might miss.\n\n## Wet Dusting vs Dry Dusting\n\nAlways use a damp cloth for dusting. Dry dusting simply moves dust particles around rather than removing them.\n\n## Wash Bedding Weekly\n\nBedsheets and pillowcases accumulate dust mites. Washing them weekly in hot water keeps your sleeping area clean and healthy.\n\n## Doormat Strategy\n\nPlace coarse doormats outside and soft ones inside every entrance. This two-mat system traps most of the dust before it enters your home.\n\nConsistent effort using these strategies makes a noticeable difference in indoor air quality and cleanliness.`,
+    slug: "reducing-dust-bangalore-home",
+    title: "Effective Ways to Reduce Dust in Your Bangalore Home",
+    excerpt: "Combat Bangalore's dust problem with these practical tips for a cleaner, dust-free living space.",
+    content: `Bangalore's ongoing construction and traffic can make keeping a dust-free home feel like an impossible task. Here are strategies that actually work.\n\n## Seal Windows and Doors\n\nUse weather stripping and door sweeps to minimize dust entering through gaps. This alone can significantly reduce indoor dust.\n\n## Use Air Purifiers\n\nPlace HEPA air purifiers in bedrooms and living areas. They capture fine dust particles that regular cleaning might miss.\n\n## Wet Dusting vs Dry Dusting\n\nAlways use a damp cloth for dusting. Dry dusting simply moves dust particles around rather than removing them.\n\n## Wash Bedding Weekly\n\nBedsheets and pillowcases accumulate dust mites. Washing them weekly in hot water keeps your sleeping area clean and healthy.\n\n## Doormat Strategy\n\nPlace coarse doormats outside and soft ones inside every entrance. This two-mat system traps most of the dust before it enters your home.\n\nConsistent effort using these strategies makes a noticeable difference in indoor air quality and cleanliness.`,
     image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&h=400&fit=crop",
     date: "2025-12-05",
     createdAt: "2025-12-05T12:15:00Z",
-    author: "Arjun Reddy",
   },
   {
     id: "13",
@@ -156,7 +149,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&h=400&fit=crop",
     date: "2025-11-28",
     createdAt: "2025-11-28T08:00:00Z",
-    author: "Lisa Park",
   },
   {
     id: "14",
@@ -167,7 +159,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=400&fit=crop",
     date: "2025-11-20",
     createdAt: "2025-11-20T14:00:00Z",
-    author: "Michael Chen",
   },
   {
     id: "15",
@@ -178,7 +169,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=800&h=400&fit=crop",
     date: "2025-11-15",
     createdAt: "2025-11-15T11:30:00Z",
-    author: "Meera Nair",
   },
   {
     id: "16",
@@ -189,7 +179,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=800&h=400&fit=crop",
     date: "2025-11-10",
     createdAt: "2025-11-10T09:15:00Z",
-    author: "Sarah Johnson",
   },
   {
     id: "17",
@@ -200,18 +189,16 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1545239705-1564e58b9e4a?w=800&h=400&fit=crop",
     date: "2025-11-05",
     createdAt: "2025-11-05T17:00:00Z",
-    author: "Priya Sharma",
   },
   {
     id: "18",
     slug: "tackling-hard-water-stains",
-    title: "How to Tackle Hard Water Stains in Bengaluru Homes",
-    excerpt: "Bengaluru's hard water leaves stubborn stains. Learn effective methods to remove and prevent them.",
-    content: `Hard water is a common issue in many parts of Bengaluru, leaving white, chalky deposits on faucets, showerheads, and glass surfaces.\n\n## White Vinegar Solution\n\nSoak affected fixtures in white vinegar for 30-60 minutes. The acid dissolves mineral deposits effectively. For stubborn spots, use undiluted vinegar.\n\n## Lemon Juice Method\n\nCut a lemon in half and rub it directly on hard water stains. The citric acid breaks down mineral deposits and leaves a fresh scent.\n\n## Commercial Descalers\n\nFor severe buildup, use a commercial descaling product designed for your specific surface. Always follow the manufacturer's instructions.\n\n## Prevention Tips\n\nWipe surfaces dry after use to prevent water spots. Install a water softener if hard water is a persistent issue in your area.\n\n## Shower Glass Treatment\n\nApply a rain repellent product (like Rain-X) to glass shower doors. Water beads up and rolls off, preventing mineral deposits.\n\nRegular maintenance prevents hard water stains from becoming a major cleaning challenge.`,
+    title: "How to Tackle Hard Water Stains in Bangalore Homes",
+    excerpt: "Bangalore's hard water leaves stubborn stains. Learn effective methods to remove and prevent them.",
+    content: `Hard water is a common issue in many parts of Bangalore, leaving white, chalky deposits on faucets, showerheads, and glass surfaces.\n\n## White Vinegar Solution\n\nSoak affected fixtures in white vinegar for 30-60 minutes. The acid dissolves mineral deposits effectively. For stubborn spots, use undiluted vinegar.\n\n## Lemon Juice Method\n\nCut a lemon in half and rub it directly on hard water stains. The citric acid breaks down mineral deposits and leaves a fresh scent.\n\n## Commercial Descalers\n\nFor severe buildup, use a commercial descaling product designed for your specific surface. Always follow the manufacturer's instructions.\n\n## Prevention Tips\n\nWipe surfaces dry after use to prevent water spots. Install a water softener if hard water is a persistent issue in your area.\n\n## Shower Glass Treatment\n\nApply a rain repellent product (like Rain-X) to glass shower doors. Water beads up and rolls off, preventing mineral deposits.\n\nRegular maintenance prevents hard water stains from becoming a major cleaning challenge.`,
     image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&h=400&fit=crop",
     date: "2025-10-28",
     createdAt: "2025-10-28T10:00:00Z",
-    author: "Vikram Patel",
   },
   {
     id: "19",
@@ -222,7 +209,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=400&fit=crop",
     date: "2025-10-20",
     createdAt: "2025-10-20T14:30:00Z",
-    author: "Meera Nair",
   },
   {
     id: "20",
@@ -233,18 +219,16 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800&h=400&fit=crop",
     date: "2025-10-15",
     createdAt: "2025-10-15T08:00:00Z",
-    author: "Emma Wilson",
   },
   {
     id: "21",
     slug: "balcony-cleaning-tips",
-    title: "Balcony Cleaning Tips for Bengaluru Apartments",
+    title: "Balcony Cleaning Tips for Bangalore Apartments",
     excerpt: "Transform your dusty balcony into a clean, relaxing outdoor space with these easy cleaning tips.",
-    content: `Balconies in Bengaluru apartments often accumulate dust, bird droppings, and grime. Here's how to keep yours clean and inviting.\n\n## Start with a Dry Sweep\n\nRemove loose dirt, leaves, and debris with a stiff broom. Work from the far end toward the drain.\n\n## Scrub the Floor\n\nMix warm water with a mild detergent and scrub the floor with a deck brush. For stubborn stains, use a baking soda paste.\n\n## Clean the Railings\n\nWipe metal railings with a damp cloth and mild soap. For glass railings, use a glass cleaner and squeegee for a streak-free finish.\n\n## Address Plant Area\n\nClean under potted plants where water stains and algae tend to develop. Use a scrub brush and diluted bleach for stubborn green stains.\n\n## Furniture Care\n\nWipe down balcony furniture with appropriate cleaners. Cover furniture when not in use to protect from dust and rain.\n\nA clean balcony extends your living space and provides a peaceful retreat, especially valuable in apartment living.`,
+    content: `Balconies in Bangalore apartments often accumulate dust, bird droppings, and grime. Here's how to keep yours clean and inviting.\n\n## Start with a Dry Sweep\n\nRemove loose dirt, leaves, and debris with a stiff broom. Work from the far end toward the drain.\n\n## Scrub the Floor\n\nMix warm water with a mild detergent and scrub the floor with a deck brush. For stubborn stains, use a baking soda paste.\n\n## Clean the Railings\n\nWipe metal railings with a damp cloth and mild soap. For glass railings, use a glass cleaner and squeegee for a streak-free finish.\n\n## Address Plant Area\n\nClean under potted plants where water stains and algae tend to develop. Use a scrub brush and diluted bleach for stubborn green stains.\n\n## Furniture Care\n\nWipe down balcony furniture with appropriate cleaners. Cover furniture when not in use to protect from dust and rain.\n\nA clean balcony extends your living space and provides a peaceful retreat, especially valuable in apartment living.`,
     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=400&fit=crop",
     date: "2025-10-10",
     createdAt: "2025-10-10T12:00:00Z",
-    author: "Arjun Reddy",
   },
   {
     id: "22",
@@ -255,7 +239,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1558317374-067fb5f30001?w=800&h=400&fit=crop",
     date: "2025-10-05",
     createdAt: "2025-10-05T16:45:00Z",
-    author: "Lisa Park",
   },
   {
     id: "23",
@@ -266,7 +249,6 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1631049035634-39d6779bda36?w=800&h=400&fit=crop",
     date: "2025-09-28",
     createdAt: "2025-09-28T09:30:00Z",
-    author: "Michael Chen",
   },
   {
     id: "24",
@@ -277,17 +259,15 @@ export const blogPosts: BlogPost[] = [
     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=400&fit=crop",
     date: "2025-09-20",
     createdAt: "2025-09-20T18:00:00Z",
-    author: "Priya Sharma",
   },
   {
     id: "25",
     slug: "importance-of-clean-workspace",
     title: "Why a Clean Home Office Boosts Productivity",
     excerpt: "Working from home? Discover how a clean workspace directly impacts your focus, creativity, and productivity.",
-    content: `With remote work becoming the norm in Bengaluru's IT culture, your home office cleanliness directly affects your work performance.\n\n## Clutter Reduces Focus\n\nStudies show that visual clutter competes for your attention, reducing your ability to focus. A clean desk literally helps you think more clearly.\n\n## Daily Desk Reset\n\nSpend 5 minutes at the end of each workday clearing your desk. File papers, throw away trash, and organize supplies for tomorrow.\n\n## Screen and Keyboard Hygiene\n\nClean your monitor weekly with a microfiber cloth. Use compressed air and disinfectant wipes on your keyboard and mouse—they harbor more bacteria than you'd expect.\n\n## Cable Management\n\nUse cable clips and ties to organize cords. A tangle-free desk looks cleaner and reduces visual stress.\n\n## Regular Deep Clean\n\nWeekly, vacuum your office area, dust shelves and equipment, and wipe down all surfaces. A fresh space energizes you for the week ahead.\n\n## Good Lighting and Air\n\nOpen windows for fresh air circulation. Good natural light reduces eye strain and improves mood.\n\nA clean home office isn't just about aesthetics—it's a direct investment in your professional performance.`,
+    content: `With remote work becoming the norm in Bangalore's IT culture, your home office cleanliness directly affects your work performance.\n\n## Clutter Reduces Focus\n\nStudies show that visual clutter competes for your attention, reducing your ability to focus. A clean desk literally helps you think more clearly.\n\n## Daily Desk Reset\n\nSpend 5 minutes at the end of each workday clearing your desk. File papers, throw away trash, and organize supplies for tomorrow.\n\n## Screen and Keyboard Hygiene\n\nClean your monitor weekly with a microfiber cloth. Use compressed air and disinfectant wipes on your keyboard and mouse—they harbor more bacteria than you'd expect.\n\n## Cable Management\n\nUse cable clips and ties to organize cords. A tangle-free desk looks cleaner and reduces visual stress.\n\n## Regular Deep Clean\n\nWeekly, vacuum your office area, dust shelves and equipment, and wipe down all surfaces. A fresh space energizes you for the week ahead.\n\n## Good Lighting and Air\n\nOpen windows for fresh air circulation. Good natural light reduces eye strain and improves mood.\n\nA clean home office isn't just about aesthetics—it's a direct investment in your professional performance.`,
     image: "https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?w=800&h=400&fit=crop",
     date: "2025-09-15",
     createdAt: "2025-09-15T07:00:00Z",
-    author: "Vikram Patel",
   },
 ];

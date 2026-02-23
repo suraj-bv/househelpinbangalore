@@ -1,11 +1,12 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import BlogCard from "@/components/BlogCard";
 import AnimatedSection from "@/components/AnimatedSection";
-import { blogPosts, type BlogPost } from "@/data/blogs";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const POSTS_PER_PAGE = 12;
@@ -14,24 +15,21 @@ const Blogs = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page") || "1");
 
-  // Sort blogs by createdAt descending (newest first)
-  const sortedPosts = useMemo(() => {
-    return [...blogPosts].sort(
-      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    );
-  }, []);
+  // Real-time query from Convex — auto-updates when data changes!
+  const posts = useQuery(api.blogPosts.getAll);
 
-  const totalPages = Math.ceil(sortedPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil((posts?.length || 0) / POSTS_PER_PAGE);
 
   // Ensure current page is valid
-  const safePage = Math.max(1, Math.min(currentPage, totalPages));
+  const safePage = Math.max(1, Math.min(currentPage, totalPages || 1));
 
   // Paginated posts
   const paginatedPosts = useMemo(() => {
+    if (!posts) return [];
     const startIndex = (safePage - 1) * POSTS_PER_PAGE;
     const endIndex = startIndex + POSTS_PER_PAGE;
-    return sortedPosts.slice(startIndex, endIndex);
-  }, [sortedPosts, safePage]);
+    return posts.slice(startIndex, endIndex);
+  }, [posts, safePage]);
 
   const goToPage = (page: number) => {
     if (page < 1 || page > totalPages) return;
@@ -87,69 +85,90 @@ const Blogs = () => {
             {safePage > 1 ? `All articles — Page ${safePage}` : "All articles"}
           </h2>
           <span className="text-sm text-muted-foreground">
-            {sortedPosts.length} article{sortedPosts.length !== 1 ? "s" : ""}
+            {posts ? `${posts.length} article${posts.length !== 1 ? "s" : ""}` : "Loading..."}
           </span>
         </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {paginatedPosts.map((post: BlogPost) => (
-            <BlogCard key={post.id} {...post} />
-          ))}
-        </div>
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <nav className="mt-16 flex items-center justify-center gap-2" aria-label="Blog pagination">
-            {/* Previous Button */}
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => goToPage(safePage - 1)}
-              disabled={safePage === 1}
-              className="h-10 w-10 rounded-full transition-all duration-200 disabled:opacity-40"
-              aria-label="Previous page"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-
-            {/* Page Numbers */}
-            <div className="flex items-center gap-1">
-              {getPageNumbers().map((page, index) =>
-                typeof page === "string" ? (
-                  <span key={`ellipsis-${index}`} className="flex h-10 w-10 items-center justify-center text-muted-foreground">
-                    …
-                  </span>
-                ) : (
-                  <Button
-                    key={page}
-                    variant={page === safePage ? "default" : "outline"}
-                    size="icon"
-                    onClick={() => goToPage(page)}
-                    className={`h-10 w-10 rounded-full font-semibold transition-all duration-200 ${
-                      page === safePage
-                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90"
-                        : "hover:bg-primary/10 hover:text-primary hover:border-primary/30"
-                    }`}
-                    aria-label={`Go to page ${page}`}
-                    aria-current={page === safePage ? "page" : undefined}
-                  >
-                    {page}
-                  </Button>
-                )
-              )}
+        {/* Loading state */}
+        {posts === undefined ? (
+          <div className="flex items-center justify-center py-20">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            <span className="ml-3 text-muted-foreground">Loading blog posts...</span>
+          </div>
+        ) : (
+          <>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {paginatedPosts.map((post) => (
+                <BlogCard
+                  key={post._id}
+                  id={post._id}
+                  slug={post.slug}
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  image={post.image}
+                  date={post.date}
+                  content={post.content}
+                  createdAt={post.createdAt}
+                />
+              ))}
             </div>
 
-            {/* Next Button */}
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={() => goToPage(safePage + 1)}
-              disabled={safePage === totalPages}
-              className="h-10 w-10 rounded-full transition-all duration-200 disabled:opacity-40"
-              aria-label="Next page"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </nav>
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <nav className="mt-16 flex items-center justify-center gap-2" aria-label="Blog pagination">
+                {/* Previous Button */}
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => goToPage(safePage - 1)}
+                  disabled={safePage === 1}
+                  className="h-10 w-10 rounded-full transition-all duration-200 disabled:opacity-40"
+                  aria-label="Previous page"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+
+                {/* Page Numbers */}
+                <div className="flex items-center gap-1">
+                  {getPageNumbers().map((page, index) =>
+                    typeof page === "string" ? (
+                      <span key={`ellipsis-${index}`} className="flex h-10 w-10 items-center justify-center text-muted-foreground">
+                        …
+                      </span>
+                    ) : (
+                      <Button
+                        key={page}
+                        variant={page === safePage ? "default" : "outline"}
+                        size="icon"
+                        onClick={() => goToPage(page)}
+                        className={`h-10 w-10 rounded-full font-semibold transition-all duration-200 ${
+                          page === safePage
+                            ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 hover:bg-primary/90"
+                            : "hover:bg-primary/10 hover:text-primary hover:border-primary/30"
+                        }`}
+                        aria-label={`Go to page ${page}`}
+                        aria-current={page === safePage ? "page" : undefined}
+                      >
+                        {page}
+                      </Button>
+                    )
+                  )}
+                </div>
+
+                {/* Next Button */}
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => goToPage(safePage + 1)}
+                  disabled={safePage === totalPages}
+                  className="h-10 w-10 rounded-full transition-all duration-200 disabled:opacity-40"
+                  aria-label="Next page"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </nav>
+            )}
+          </>
         )}
       </AnimatedSection>
 

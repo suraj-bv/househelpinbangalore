@@ -8,10 +8,10 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <Link to="/" className="text-xl font-bold text-primary">
-              House Help in Bengaluru
+              House Help in Bangalore
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">
-              Professional hourly maid services in Bengaluru. Get instant help for daily cleaning, dishwashing, laundry, and more – book through our app today!
+              Professional hourly maid services in Bangalore. Get instant help for daily cleaning, dishwashing, laundry, and more – book through our app today!
             </p>
           </div>
 
@@ -26,7 +26,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 border-t pt-6 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} House Help in Bengaluru. All rights reserved.
+          © {new Date().getFullYear()} House Help in Bangalore. All rights reserved.
         </div>
       </div>
     </footer>

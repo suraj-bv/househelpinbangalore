@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import Blogs from "./pages/Blogs";
 import SingleBlog from "./pages/SingleBlog";
 import NotFound from "./pages/NotFound";
+import AdminLogin from "./pages/admin/AdminLogin";
+import BlogAdmin from "./pages/admin/BlogAdmin";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +22,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:slug" element={<SingleBlog />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/blogs" element={<BlogAdmin />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
